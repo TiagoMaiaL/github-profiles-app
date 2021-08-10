@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A77BF4026C213C100E353B1 /* GithubProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF3F26C213C100E353B1 /* GithubProfilesViewModel.swift */; };
+		5A77BF4126C213C100E353B1 /* GithubProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF3F26C213C100E353B1 /* GithubProfilesViewModel.swift */; };
+		5A77BF4326C2B43900E353B1 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF4226C2B43900E353B1 /* GithubUser.swift */; };
+		5A77BF4426C2B43900E353B1 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF4226C2B43900E353B1 /* GithubUser.swift */; };
+		5A77BF4626C2B74700E353B1 /* GithubUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF4526C2B74700E353B1 /* GithubUserViewModel.swift */; };
+		5A77BF4726C2B74700E353B1 /* GithubUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF4526C2B74700E353B1 /* GithubUserViewModel.swift */; };
 		5AD96B4F26C07CF00012AFFA /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B4E26C07CF00012AFFA /* Tests_iOS.swift */; };
 		5AD96B5926C07CF00012AFFA /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B5826C07CF00012AFFA /* Tests_macOS.swift */; };
 		5AD96B5A26C07CF00012AFFA /* GithubProfilesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B3826C07CEA0012AFFA /* GithubProfilesApp.swift */; };
@@ -35,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A77BF3F26C213C100E353B1 /* GithubProfilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfilesViewModel.swift; sourceTree = "<group>"; };
+		5A77BF4226C2B43900E353B1 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
+		5A77BF4526C2B74700E353B1 /* GithubUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserViewModel.swift; sourceTree = "<group>"; };
 		5AD96B3826C07CEA0012AFFA /* GithubProfilesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfilesApp.swift; sourceTree = "<group>"; };
 		5AD96B3926C07CEA0012AFFA /* GithubProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfilesView.swift; sourceTree = "<group>"; };
 		5AD96B3A26C07CF00012AFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,7 +100,6 @@
 		5AD96B3726C07CEA0012AFFA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5AD96B7126C0807A0012AFFA /* Services */,
 				5AD96B7026C080690012AFFA /* Model */,
 				5AD96B6F26C07D0F0012AFFA /* User Interface */,
 				5AD96B6E26C07D060012AFFA /* Resources */,
@@ -139,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				5AD96B3926C07CEA0012AFFA /* GithubProfilesView.swift */,
+				5A77BF3F26C213C100E353B1 /* GithubProfilesViewModel.swift */,
+				5A77BF4526C2B74700E353B1 /* GithubUserViewModel.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -146,15 +156,9 @@
 		5AD96B7026C080690012AFFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A77BF4226C2B43900E353B1 /* GithubUser.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5AD96B7126C0807A0012AFFA /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD96B5C26C07CF00012AFFA /* GithubProfilesView.swift in Sources */,
+				5A77BF4626C2B74700E353B1 /* GithubUserViewModel.swift in Sources */,
+				5A77BF4326C2B43900E353B1 /* GithubUser.swift in Sources */,
 				5AD96B5A26C07CF00012AFFA /* GithubProfilesApp.swift in Sources */,
+				5A77BF4026C213C100E353B1 /* GithubProfilesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +332,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD96B5D26C07CF00012AFFA /* GithubProfilesView.swift in Sources */,
+				5A77BF4726C2B74700E353B1 /* GithubUserViewModel.swift in Sources */,
+				5A77BF4426C2B43900E353B1 /* GithubUser.swift in Sources */,
 				5AD96B5B26C07CF00012AFFA /* GithubProfilesApp.swift in Sources */,
+				5A77BF4126C213C100E353B1 /* GithubProfilesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,9 @@ struct GithubProfilesView: View {
     private var searchBar: some View {
         HStack {
             TextField("Search for a Github profile", text: $searchText)
+                .onSubmit {
+                    debugPrint("submitting a value")
+                }
             Image(systemName: "magnifyingglass")
         }
         .padding()
@@ -46,7 +49,6 @@ struct GithubProfilesView: View {
             Text("Company")
             Text("Blog")
             Text("Location")
-            
         }
         .padding()
         .background(.thickMaterial)
