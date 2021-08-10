@@ -6,32 +6,45 @@
 //
 
 import Foundation
+import Combine
 
-final class GithubProfilesViewModel {
+@MainActor
+final class GithubProfilesViewModel: ObservableObject {
     
     // MARK: Properties
-    
-    // TODO: Add a property for the user already fetched here.
-    // TODO: Add a property to display errors.
     
     private let hostURL = URL(string: "https://api.github.com")!
     private let usersPath = "users"
     
     private var profileTask: Task<GithubUser, Error>?
     
+    @Published
+    private(set) var fetchedProfile: GithubUserViewModel?
+    
+    // TODO: Add a property to display errors.
+    
     // MARK: Imperatives
     
     func fetchProfile(using username: String) {
-        profileTask = Task {
-            let (data, _) = try await URLSession.shared.data(from: profileURL(for: username))
+        profileTask?.cancel()
+        profileTask = Task(priority: .userInitiated) {
+            let data = try await data(for: username)
             let user = try user(from: data)
-            // TODO: Inform it by using the view model.
+            
+            try Task.checkCancellation()
+            
+            fetchedProfile = GithubUserViewModel(user: user)
+            
+            return user
         }
-
-//        // TODO: Call the user endpoint.
     }
     
     // MARK: Internal Methods
+    
+    private func data(for username: String) async throws -> Data {
+        let (data, _) = try await URLSession.shared.data(from: profileURL(for: username))
+        return data
+    }
     
     private func profileURL(for username: String) -> URL {
         hostURL.appendingPathComponent(usersPath).appendingPathComponent(username)

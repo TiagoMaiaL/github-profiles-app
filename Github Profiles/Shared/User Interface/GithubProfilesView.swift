@@ -11,6 +11,9 @@ struct GithubProfilesView: View {
     
     // MARK: Properties
     
+    @StateObject
+    private var viewModel = GithubProfilesViewModel()
+    
     @State
     private var searchText: String = ""
     
@@ -29,7 +32,7 @@ struct GithubProfilesView: View {
         HStack {
             TextField("Search for a Github profile", text: $searchText)
                 .onSubmit {
-                    debugPrint("submitting a value")
+                    viewModel.fetchProfile(using: searchText)
                 }
             Image(systemName: "magnifyingglass")
         }
@@ -37,21 +40,28 @@ struct GithubProfilesView: View {
         .background(.thickMaterial)
     }
     
+    @ViewBuilder
     private var profileView: some View {
-        VStack {
-            Image("octocat_image")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        if let fetchedProfile = viewModel.fetchedProfile {
+            VStack {
+                // TODO: Display the profile image using AsyncImage.
+                Image("octocat_image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Text(fetchedProfile.name)
+                    .font(.title)
+                
+                Text(fetchedProfile.company ?? "No company")
+                Text(fetchedProfile.blog ?? "No blog")
+                Text(fetchedProfile.location ?? "No location")
+            }
+            .padding()
+            .background(.thickMaterial)
             
-            Text("The Octocat")
-                .font(.title)
-            
-            Text("Company")
-            Text("Blog")
-            Text("Location")
+        } else {
+            EmptyView()
         }
-        .padding()
-        .background(.thickMaterial)
     }
 }
 
