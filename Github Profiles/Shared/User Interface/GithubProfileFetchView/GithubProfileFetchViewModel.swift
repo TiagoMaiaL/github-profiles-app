@@ -17,25 +17,31 @@ final class GithubProfileFetchViewModel: ObservableObject {
     
     private var profileTask: Task<Void, Never>?
     
-    @Published
-    private(set) var fetchedProfile: GithubProfileViewModel?
+    // MARK: State
+    
+    enum State {
+        case `default`
+        case loading
+        case fetched(profile: GithubProfileViewModel)
+        case failure
+    }
     
     @Published
-    private(set) var isLoadingProfile = false
+    private(set) var state = State.default
     
-    @Published
-    var shouldDisplayFailure = false
-    
-    // TODO: Use the state pattern here.
-    // TODO: Add a property to display errors.
+    // TODO: Add a binding property to display generic errors via alert.
     
     // MARK: Imperatives
     
     func fetchProfile(using username: String) {
-        fetchedProfile = nil
+        guard !username.isEmpty else {
+            state = .`default`
+            return
+        }
+        
         profileTask?.cancel()
         profileTask = Task(priority: .userInitiated) {
-            isLoadingProfile = true
+            state = .loading
             
             do {
                 let url = profileURL(for: username)
@@ -46,13 +52,11 @@ final class GithubProfileFetchViewModel: ObservableObject {
                     return
                 }
                 
-                fetchedProfile = GithubProfileViewModel(user: user)
+                state = .fetched(profile: GithubProfileViewModel(user: user))
                 
             } catch {
-                inform(error)
+                state = .failure
             }
-            
-            isLoadingProfile = false
         }
     }
     
@@ -65,10 +69,5 @@ final class GithubProfileFetchViewModel: ObservableObject {
         return hostURL
             .appendingPathComponent(usersPath)
             .appendingPathComponent(username)
-    }
-    
-    private func inform(_ error: Error) {
-        // TODO: Inform the error.
-        shouldDisplayFailure = true
     }
 }

@@ -25,20 +25,22 @@ struct GithubProfileFetchView: View {
             
             Spacer()
             
-            if let fetchedProfile = viewModel.fetchedProfile {
-                GithubProfileView(viewModel: fetchedProfile)
-            } else if viewModel.isLoadingProfile {
+            switch viewModel.state {
+            case .`default`:
+                EmptyView()
+                
+            case .fetched(let profileViewModel):
+                GithubProfileView(viewModel: profileViewModel)
+                
+            case .loading:
                 ProgressView()
+                
+            case .failure:
+                // TODO: Display the fetch failure.
+                EmptyView()
             }
             
             Spacer()
-        }
-        .alert(isPresented: $viewModel.shouldDisplayFailure) {
-            Alert(
-                title: Text("Fetch failed"),
-                primaryButton: Alert.Button.default(Text("Retry")),
-                secondaryButton: Alert.Button.cancel()
-            )
         }
     }
     
