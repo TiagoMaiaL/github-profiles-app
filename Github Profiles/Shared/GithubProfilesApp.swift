@@ -11,7 +11,7 @@ import SwiftUI
 struct GithubProfilesApp: App {
     var body: some Scene {
         WindowGroup {
-            GithubProfilesView()
+            GithubProfileFetchView()
         }
     }
 }

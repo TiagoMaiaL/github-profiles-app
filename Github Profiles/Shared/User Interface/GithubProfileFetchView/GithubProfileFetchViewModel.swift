@@ -1,6 +1,6 @@
 //
-//  GithubProfilesViewModel.swift
-//  GithubProfilesViewModel
+//  GithubProfileFetchViewModel.swift
+//  GithubProfileFetchViewModel
 //
 //  Created by Tiago Lopes on 09/08/21.
 //
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class GithubProfilesViewModel: ObservableObject {
+final class GithubProfileFetchViewModel: ObservableObject {
     
     // MARK: Properties
     
@@ -19,7 +19,7 @@ final class GithubProfilesViewModel: ObservableObject {
     private var profileTask: Task<GithubUser, Error>?
     
     @Published
-    private(set) var fetchedProfile: GithubUserViewModel?
+    private(set) var fetchedProfile: GithubProfileViewModel?
     
     // TODO: Add a property to display errors.
     
@@ -33,7 +33,7 @@ final class GithubProfilesViewModel: ObservableObject {
             
             try Task.checkCancellation()
             
-            fetchedProfile = GithubUserViewModel(user: user)
+            fetchedProfile = GithubProfileViewModel(user: user)
             
             return user
         }

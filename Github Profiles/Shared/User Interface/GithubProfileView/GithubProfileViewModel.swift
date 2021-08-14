@@ -1,13 +1,13 @@
 //
-//  GithubUserViewModel.swift
-//  GithubUserViewModel
+//  GithubProfileViewModel.swift
+//  GithubProfileViewModel
 //
 //  Created by Tiago Lopes on 10/08/21.
 //
 
 import Foundation
 
-struct GithubUserViewModel {
+struct GithubProfileViewModel {
     
     // MARK: Properties
     
