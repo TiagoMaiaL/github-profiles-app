@@ -21,18 +21,26 @@ final class GithubProfileFetchViewModel: ObservableObject {
     @Published
     private(set) var fetchedProfile: GithubProfileViewModel?
     
+    @Published
+    private(set) var isLoadingProfile = false
+    
+    // TODO: Display the native loading indicator.
     // TODO: Add a property to display errors.
     
     // MARK: Imperatives
     
     func fetchProfile(using username: String) {
+        fetchedProfile = nil
         profileTask?.cancel()
         profileTask = Task(priority: .userInitiated) {
+            isLoadingProfile = true
+            
             let data = try await data(for: username)
             let user = try user(from: data)
             
             try Task.checkCancellation()
             
+            isLoadingProfile = false
             fetchedProfile = GithubProfileViewModel(user: user)
             
             return user

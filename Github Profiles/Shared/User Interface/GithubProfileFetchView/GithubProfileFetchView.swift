@@ -27,6 +27,8 @@ struct GithubProfileFetchView: View {
             
             if let fetchedProfile = viewModel.fetchedProfile {
                 GithubProfileView(viewModel: fetchedProfile)
+            } else if viewModel.isLoadingProfile {
+                ProgressView()
             }
             
             Spacer()
