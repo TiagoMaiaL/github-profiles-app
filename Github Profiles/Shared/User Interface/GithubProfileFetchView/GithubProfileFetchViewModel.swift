@@ -16,7 +16,7 @@ final class GithubProfileFetchViewModel: ObservableObject {
     private let hostURL = URL(string: "https://api.github.com")!
     private let usersPath = "users"
     
-    private var profileTask: Task<GithubUser, Error>?
+    private var profileTask: Task<Void, Never>?
     
     @Published
     private(set) var fetchedProfile: GithubProfileViewModel?
@@ -24,8 +24,11 @@ final class GithubProfileFetchViewModel: ObservableObject {
     @Published
     private(set) var isLoadingProfile = false
     
-    // TODO: Display the native loading indicator.
+    @Published
+    var shouldDisplayFailure = false
+    
     // TODO: Add a property to display errors.
+    // TODO: Add a service to handle and report errors.
     
     // MARK: Imperatives
     
@@ -35,15 +38,21 @@ final class GithubProfileFetchViewModel: ObservableObject {
         profileTask = Task(priority: .userInitiated) {
             isLoadingProfile = true
             
-            let data = try await data(for: username)
-            let user = try user(from: data)
-            
-            try Task.checkCancellation()
+            do {
+                let data = try await data(for: username)
+                let user = try user(from: data)
+                
+                guard !Task.isCancelled else {
+                    return
+                }
+                
+                fetchedProfile = GithubProfileViewModel(user: user)
+
+            } catch {
+                shouldDisplayFailure = true
+            }
             
             isLoadingProfile = false
-            fetchedProfile = GithubProfileViewModel(user: user)
-            
-            return user
         }
     }
     
