@@ -36,7 +36,7 @@ struct GithubProfileFetchView: View {
         .alert(isPresented: $viewModel.shouldDisplayFailure) {
             Alert(
                 title: Text("Fetch failed"),
-                primaryButton: Alert.Button.default(Text("Retry").bold()),
+                primaryButton: Alert.Button.default(Text("Retry")),
                 secondaryButton: Alert.Button.cancel()
             )
         }

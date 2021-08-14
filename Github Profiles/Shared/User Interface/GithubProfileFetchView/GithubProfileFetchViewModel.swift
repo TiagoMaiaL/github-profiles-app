@@ -13,8 +13,7 @@ final class GithubProfileFetchViewModel: ObservableObject {
     
     // MARK: Properties
     
-    private let hostURL = URL(string: "https://api.github.com")!
-    private let usersPath = "users"
+    private let client = HttpClient()
     
     private var profileTask: Task<Void, Never>?
     
@@ -27,8 +26,8 @@ final class GithubProfileFetchViewModel: ObservableObject {
     @Published
     var shouldDisplayFailure = false
     
+    // TODO: Use the state pattern here.
     // TODO: Add a property to display errors.
-    // TODO: Add a service to handle and report errors.
     
     // MARK: Imperatives
     
@@ -39,17 +38,18 @@ final class GithubProfileFetchViewModel: ObservableObject {
             isLoadingProfile = true
             
             do {
-                let data = try await data(for: username)
-                let user = try user(from: data)
+                let url = profileURL(for: username)
+                let user: GithubUser = try await client.resource(from: url)
+                // TODO: Fetch for the followers and projects.
                 
                 guard !Task.isCancelled else {
                     return
                 }
                 
                 fetchedProfile = GithubProfileViewModel(user: user)
-
+                
             } catch {
-                shouldDisplayFailure = true
+                inform(error)
             }
             
             isLoadingProfile = false
@@ -58,17 +58,17 @@ final class GithubProfileFetchViewModel: ObservableObject {
     
     // MARK: Internal Methods
     
-    private func data(for username: String) async throws -> Data {
-        let (data, _) = try await URLSession.shared.data(from: profileURL(for: username))
-        return data
-    }
-    
     private func profileURL(for username: String) -> URL {
-        hostURL.appendingPathComponent(usersPath).appendingPathComponent(username)
+        let hostURL = URL(string: "https://api.github.com")!
+        let usersPath = "users"
+        
+        return hostURL
+            .appendingPathComponent(usersPath)
+            .appendingPathComponent(username)
     }
     
-    private func user(from data: Data) throws -> GithubUser {
-        let decoder = JSONDecoder()
-        return try decoder.decode(GithubUser.self, from: data)
+    private func inform(_ error: Error) {
+        // TODO: Inform the error.
+        shouldDisplayFailure = true
     }
 }
