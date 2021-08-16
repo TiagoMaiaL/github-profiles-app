@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GithubUser: Codable {
+struct GithubUser: Codable, Equatable {
     
     // MARK: Properties
     

@@ -19,17 +19,15 @@ final class GithubProfileFetchViewModel: ObservableObject {
     
     // MARK: State
     
-    enum State {
+    enum State: Equatable {
         case `default`
         case loading
         case fetched(profile: GithubProfileViewModel)
-        case failure
+        case failure(error: HttpError)
     }
     
     @Published
     private(set) var state = State.default
-    
-    // TODO: Add a binding property to display generic errors via alert.
     
     // MARK: Imperatives
     
@@ -46,7 +44,8 @@ final class GithubProfileFetchViewModel: ObservableObject {
             do {
                 let url = profileURL(for: username)
                 let user: GithubUser = try await client.resource(from: url)
-                // TODO: Fetch for the followers and projects.
+                
+                // TODO: Fetch the user's projects.
                 
                 guard !Task.isCancelled else {
                     return
@@ -55,7 +54,8 @@ final class GithubProfileFetchViewModel: ObservableObject {
                 state = .fetched(profile: GithubProfileViewModel(user: user))
                 
             } catch {
-                state = .failure
+                let httpError = (error as? HttpError) ?? .unknownFailure
+                state = .failure(error: httpError)
             }
         }
     }

@@ -53,7 +53,7 @@ final class HttpClient {
 
 // MARK: - Errors
 
-enum HttpError: Error {
+enum HttpError: Error, Equatable {
     case connectionFailure
     case unknownFailure
     case requestFailed(statusCode: Int)

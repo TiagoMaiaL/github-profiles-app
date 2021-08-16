@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GithubProfileViewModel {
+struct GithubProfileViewModel: Equatable {
     
     // MARK: Properties
     

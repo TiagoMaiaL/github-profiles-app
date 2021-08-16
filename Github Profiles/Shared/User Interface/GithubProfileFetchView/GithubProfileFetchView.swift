@@ -16,7 +16,7 @@ struct GithubProfileFetchView: View {
     
     @State
     private var searchText: String = ""
-    
+        
     // MARK: Body
     
     var body: some View {
@@ -35,9 +35,12 @@ struct GithubProfileFetchView: View {
             case .loading:
                 ProgressView()
                 
-            case .failure:
-                // TODO: Display the fetch failure.
-                EmptyView()
+            case .failure(let error):
+                if error == .requestFailed(statusCode: 404) {
+                    GithubProfileNotFoundView()
+                } else {
+                    ConnectionErrorView()
+                }
             }
             
             Spacer()
@@ -60,6 +63,8 @@ struct GithubProfileFetchView: View {
 // MARK: - Preview
 
 struct GithubProfileFetchView_Previews: PreviewProvider {
+    // TODO: Put all preview variations here (loading, fetched, failure).
+    
     static var previews: some View {
         GithubProfileFetchView()
     }
