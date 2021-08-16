@@ -21,7 +21,9 @@ struct GithubProfileFetchView: View {
     
     var body: some View {
         VStack {
-            searchBar
+            SearchBar(searchText: $searchText) {
+                viewModel.fetchProfile(using: searchText)
+            }
             
             Spacer()
             
@@ -45,18 +47,6 @@ struct GithubProfileFetchView: View {
             
             Spacer()
         }
-    }
-    
-    private var searchBar: some View {
-        HStack {
-            TextField("Search using a name or identifier", text: $searchText)
-                .onSubmit {
-                    viewModel.fetchProfile(using: searchText)
-                }
-            Image(systemName: "magnifyingglass")
-        }
-        .padding()
-        .background(.thickMaterial)
     }
 }
 

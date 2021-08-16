@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DefaultProfileView: View {
+    
+    // MARK: Body
+    
     var body: some View {
         VStack(spacing: 10) {
             Image(systemName: "person.fill")
@@ -19,6 +22,8 @@ struct DefaultProfileView: View {
         .multilineTextAlignment(.center)
     }
 }
+
+// MARK: - Preview
 
 struct DefaultProfileView_Previews: PreviewProvider {
     static var previews: some View {
