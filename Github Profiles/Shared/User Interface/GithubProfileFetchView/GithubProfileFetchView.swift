@@ -27,7 +27,7 @@ struct GithubProfileFetchView: View {
             
             switch viewModel.state {
             case .`default`:
-                EmptyView()
+                DefaultProfileView()
                 
             case .fetched(let profileViewModel):
                 GithubProfileView(viewModel: profileViewModel)
@@ -49,7 +49,7 @@ struct GithubProfileFetchView: View {
     
     private var searchBar: some View {
         HStack {
-            TextField("Search for a Github profile", text: $searchText)
+            TextField("Search using a name or identifier", text: $searchText)
                 .onSubmit {
                     viewModel.fetchProfile(using: searchText)
                 }
