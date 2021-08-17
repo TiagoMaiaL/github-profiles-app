@@ -44,24 +44,28 @@ private extension ErrorView {
 // MARK: Instances
 
 extension ErrorView {
-    static let connectionError = ErrorView(
-        systemImageName: "wifi.exclamationmark",
-        title: "Error",
-        message: "An error has occurred. Please, check your internet connection and try again."
-    )
+    static func connectionError() -> ErrorView {
+        ErrorView(
+            systemImageName: "wifi.exclamationmark",
+            title: "Error",
+            message: "An error has occurred. Please, check your internet connection and try again."
+        )
+    }
     
-    static let profileNotFound = ErrorView(
-        systemImageName: "person.fill.xmark",
-        title: "Profile not found",
-        message: "Try searching for a different name or identifier."
-    )
+    static func profileNotFound() -> ErrorView {
+        ErrorView(
+            systemImageName: "person.fill.xmark",
+            title: "Profile not found",
+            message: "Try searching for a different name or identifier."
+        )
+    }
 }
 
 // MARK: - Preview
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView.connectionError
-        ErrorView.profileNotFound
+        ErrorView.connectionError()
+        ErrorView.profileNotFound()
     }
 }

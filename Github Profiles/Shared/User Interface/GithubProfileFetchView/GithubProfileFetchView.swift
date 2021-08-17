@@ -39,9 +39,9 @@ struct GithubProfileFetchView: View {
                 
             case .failure(let error):
                 if error == .requestFailed(statusCode: 404) {
-                    ErrorView.profileNotFound
+                    ErrorView.profileNotFound()
                 } else {
-                    ErrorView.connectionError
+                    ErrorView.connectionError()
                 }
             }
             
