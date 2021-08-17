@@ -66,11 +66,12 @@ struct GithubProfileView_Previews: PreviewProvider {
             location: "San Francisco",
             avatarUrl: nil,
             publicRepositoriesCount: 5,
+            publicRepositoriesUrl: URL(string: "github.com")!,
             blog: "www.octoblog.com",
             company: "Github",
             bio: "Half cat, half octopus"
         )
         
-        GithubProfileView(viewModel: GithubProfileViewModel(user: user))
+        GithubProfileView(viewModel: GithubProfileViewModel(user: user, repositories: nil))
     }
 }

@@ -44,14 +44,14 @@ final class GithubProfileFetchViewModel: ObservableObject {
             do {
                 let url = profileURL(for: username)
                 let user: GithubUser = try await client.resource(from: url)
-                
-                // TODO: Fetch the user's projects.
+                let repositories: [Repository] = try await client.resource(from: user.publicRepositoriesUrl)
                 
                 guard !Task.isCancelled else {
                     return
                 }
                 
-                state = .fetched(profile: GithubProfileViewModel(user: user))
+                let profileViewModel = GithubProfileViewModel(user: user, repositories: repositories)
+                state = .fetched(profile: profileViewModel)
                 
             } catch {
                 let httpError = (error as? HttpError) ?? .unknownFailure

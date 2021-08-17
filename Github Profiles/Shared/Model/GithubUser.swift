@@ -16,6 +16,7 @@ struct GithubUser: Codable, Equatable {
     let location: String?
     let avatarUrl: URL?
     let publicRepositoriesCount: Int
+    let publicRepositoriesUrl: URL
     let blog: String?
     let company: String?
     let bio: String?
@@ -25,6 +26,7 @@ struct GithubUser: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
         case publicRepositoriesCount = "public_repos"
+        case publicRepositoriesUrl = "repos_url"
         
         case login
         case name
