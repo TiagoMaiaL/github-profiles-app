@@ -24,6 +24,8 @@
 		5AB7FC5426C8091E00B69E39 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7FC5226C8091E00B69E39 /* HttpClient.swift */; };
 		5ACEA1DE26CB42E8006B25F5 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEA1DD26CB42E8006B25F5 /* Repository.swift */; };
 		5ACEA1DF26CB42E8006B25F5 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEA1DD26CB42E8006B25F5 /* Repository.swift */; };
+		5ACEA1E126CB5262006B25F5 /* ProfileEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEA1E026CB5262006B25F5 /* ProfileEntryView.swift */; };
+		5ACEA1E226CB5262006B25F5 /* ProfileEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEA1E026CB5262006B25F5 /* ProfileEntryView.swift */; };
 		5AD96B4F26C07CF00012AFFA /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B4E26C07CF00012AFFA /* Tests_iOS.swift */; };
 		5AD96B5926C07CF00012AFFA /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B5826C07CF00012AFFA /* Tests_macOS.swift */; };
 		5AD96B5A26C07CF00012AFFA /* GithubProfilesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD96B3826C07CEA0012AFFA /* GithubProfilesApp.swift */; };
@@ -61,6 +63,7 @@
 		5AB7FC4C26C7446000B69E39 /* GithubProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfileView.swift; sourceTree = "<group>"; };
 		5AB7FC5226C8091E00B69E39 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		5ACEA1DD26CB42E8006B25F5 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		5ACEA1E026CB5262006B25F5 /* ProfileEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntryView.swift; sourceTree = "<group>"; };
 		5AD96B3826C07CEA0012AFFA /* GithubProfilesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfilesApp.swift; sourceTree = "<group>"; };
 		5AD96B3926C07CEA0012AFFA /* GithubProfileFetchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfileFetchView.swift; sourceTree = "<group>"; };
 		5AD96B3A26C07CF00012AFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 			children = (
 				5A77BF4526C2B74700E353B1 /* GithubProfileViewModel.swift */,
 				5AB7FC4C26C7446000B69E39 /* GithubProfileView.swift */,
+				5ACEA1E026CB5262006B25F5 /* ProfileEntryView.swift */,
 			);
 			path = GithubProfileView;
 			sourceTree = "<group>";
@@ -377,6 +381,7 @@
 				5AD96B5C26C07CF00012AFFA /* GithubProfileFetchView.swift in Sources */,
 				5AB7FC4D26C7446000B69E39 /* GithubProfileView.swift in Sources */,
 				5A77BF4626C2B74700E353B1 /* GithubProfileViewModel.swift in Sources */,
+				5ACEA1E126CB5262006B25F5 /* ProfileEntryView.swift in Sources */,
 				5A77BF4326C2B43900E353B1 /* GithubUser.swift in Sources */,
 				5A9E0FF526C9F6EB004C405C /* DefaultProfileView.swift in Sources */,
 				5ACEA1DE26CB42E8006B25F5 /* Repository.swift in Sources */,
@@ -392,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACEA1E226CB5262006B25F5 /* ProfileEntryView.swift in Sources */,
 				5AD96B5D26C07CF00012AFFA /* GithubProfileFetchView.swift in Sources */,
 				5AB7FC4E26C7446000B69E39 /* GithubProfileView.swift in Sources */,
 				5A77BF4726C2B74700E353B1 /* GithubProfileViewModel.swift in Sources */,

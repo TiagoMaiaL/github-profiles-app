@@ -20,15 +20,24 @@ struct GithubProfileView: View {
     // MARK: Body
     
     var body: some View {
-        VStack {
+        VStack(spacing: Constants.screenVerticalSpacing) {
             profileImage
             
-            Text(viewModel.name)
-                .font(.title)
+            VStack {
+                ProfileEntryView(entryValue: viewModel.name)
+                    .font(.title)
+                ProfileEntryView(entryValue: viewModel.bio)
+                    .font(.callout)
+            }
+            .foregroundColor(.primary)
             
-            Text(viewModel.company ?? "No company")
-            Text(viewModel.blog ?? "No blog")
-            Text(viewModel.location ?? "No location")
+            VStack(spacing: Constants.verticalEntrySpacing) {
+                ProfileEntryView(entryImageName: "building.2", entryValue: viewModel.company)
+                ProfileEntryView(entryImageName: "location.north", entryValue: viewModel.location)
+                ProfileEntryView(entryImageName: "link", entryValue: viewModel.blog)
+            }
+            .font(.callout)
+            .foregroundColor(.secondary)
         }
         .padding()
         .background(.thickMaterial)
@@ -54,7 +63,14 @@ struct GithubProfileView: View {
     }
 }
 
-// TODO: Add a text only if we have a value.
+// MARK: Constants
+
+private extension GithubProfileView {
+    enum Constants {
+        static let screenVerticalSpacing: CGFloat = 15.0
+        static let verticalEntrySpacing: CGFloat = 5.0
+    }
+}
 
 // MARK: - Preview
 

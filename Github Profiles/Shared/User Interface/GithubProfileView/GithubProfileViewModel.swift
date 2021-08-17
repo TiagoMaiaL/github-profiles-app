@@ -15,6 +15,7 @@ struct GithubProfileViewModel: Equatable {
     
     var avatarURL: URL? { user.avatarUrl }
     var name: String { user.name ?? user.login }
+    var bio: String? { user.bio }
     var company: String? { user.company }
     var location: String? { user.location }
     var blog: String? { user.blog }
