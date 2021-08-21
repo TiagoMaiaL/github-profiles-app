@@ -23,6 +23,9 @@
 		5A9E0FF626C9F6EB004C405C /* DefaultProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9E0FF426C9F6EB004C405C /* DefaultProfileView.swift */; };
 		5A9E0FF926C9FA42004C405C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9E0FF826C9FA42004C405C /* SearchBar.swift */; };
 		5A9E0FFA26C9FA42004C405C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9E0FF826C9FA42004C405C /* SearchBar.swift */; };
+		5AA5828126D189E2007C1875 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5828026D189E2007C1875 /* UIConstants.swift */; };
+		5AA5828326D18A5A007C1875 /* App+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5828226D18A5A007C1875 /* App+Color.swift */; };
+		5AA5828526D18B12007C1875 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA5828426D18B12007C1875 /* LoadingIndicator.swift */; };
 		5AB7FC4D26C7446000B69E39 /* GithubProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7FC4C26C7446000B69E39 /* GithubProfileView.swift */; };
 		5AB7FC4E26C7446000B69E39 /* GithubProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7FC4C26C7446000B69E39 /* GithubProfileView.swift */; };
 		5AB7FC5326C8091E00B69E39 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7FC5226C8091E00B69E39 /* HttpClient.swift */; };
@@ -70,6 +73,9 @@
 		5A84094426D184EE00E51FD3 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		5A9E0FF426C9F6EB004C405C /* DefaultProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileView.swift; sourceTree = "<group>"; };
 		5A9E0FF826C9FA42004C405C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		5AA5828026D189E2007C1875 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		5AA5828226D18A5A007C1875 /* App+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Color.swift"; sourceTree = "<group>"; };
+		5AA5828426D18B12007C1875 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		5AB7FC4C26C7446000B69E39 /* GithubProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfileView.swift; sourceTree = "<group>"; };
 		5AB7FC5226C8091E00B69E39 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		5ACEA1DD26CB42E8006B25F5 /* GithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
@@ -134,6 +140,9 @@
 				5A9E0FF826C9FA42004C405C /* SearchBar.swift */,
 				5A84094226D1691F00E51FD3 /* LeadingText.swift */,
 				5ACEA1E026CB5262006B25F5 /* IconPrefixedText.swift */,
+				5AA5828426D18B12007C1875 /* LoadingIndicator.swift */,
+				5AA5828026D189E2007C1875 /* UIConstants.swift */,
+				5AA5828226D18A5A007C1875 /* App+Color.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -409,9 +418,12 @@
 				5A84094326D1691F00E51FD3 /* LeadingText.swift in Sources */,
 				5A77BF4626C2B74700E353B1 /* GithubProfileViewModel.swift in Sources */,
 				5A84094526D184EE00E51FD3 /* ProfileImage.swift in Sources */,
+				5AA5828326D18A5A007C1875 /* App+Color.swift in Sources */,
 				5ACEA1E126CB5262006B25F5 /* IconPrefixedText.swift in Sources */,
 				5A77BF4326C2B43900E353B1 /* GithubUser.swift in Sources */,
 				5A9E0FF526C9F6EB004C405C /* DefaultProfileView.swift in Sources */,
+				5AA5828526D18B12007C1875 /* LoadingIndicator.swift in Sources */,
+				5AA5828126D189E2007C1875 /* UIConstants.swift in Sources */,
 				5ACEA1DE26CB42E8006B25F5 /* GithubRepository.swift in Sources */,
 				5AB7FC5326C8091E00B69E39 /* HttpClient.swift in Sources */,
 				5AD96B5A26C07CF00012AFFA /* GithubProfilesApp.swift in Sources */,

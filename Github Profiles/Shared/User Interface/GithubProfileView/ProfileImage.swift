@@ -23,20 +23,30 @@ struct ProfileImage: View {
         if isRunningInPreview {
             Image("octocat_image")
                 .resizable()
-                .aspectRatio(1, contentMode: .fit)
+                .aspectRatio(Constants.imageAspectRatio, contentMode: .fit)
+                .clipShape(Circle())
+                .frame(height: Constants.imageHeight)
         } else {
             AsyncImage(url: url) { image in
                 image
                     .resizable()
-                    .aspectRatio(1, contentMode: .fit)
+                    .aspectRatio(Constants.imageAspectRatio, contentMode: .fit)
                     .clipShape(Circle())
             } placeholder: {
-                ProgressView()
+                LoadingIndicator()
             }
-            .frame(height: 200)
-            .aspectRatio(1, contentMode: .fit)
-            // TODO: Make the progress view and the image have the same size.
+            .frame(height: Constants.imageHeight)
+            .aspectRatio(Constants.imageAspectRatio, contentMode: .fit)
         }
+    }
+}
+
+// MARK: Constants
+
+private extension ProfileImage {
+    enum Constants {
+        static let imageAspectRatio: CGFloat = 1.0
+        static let imageHeight: CGFloat = 200.0
     }
 }
 

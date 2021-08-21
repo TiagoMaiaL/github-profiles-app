@@ -24,6 +24,7 @@ struct GithubProfileFetchView: View {
             SearchBar(searchText: $searchText) {
                 viewModel.fetchProfile(using: searchText)
             }
+            .padding()
             
             Spacer()
             
@@ -38,7 +39,7 @@ struct GithubProfileFetchView: View {
                 }
                 
             case .loading:
-                ProgressView()
+                LoadingIndicator()
                 
             case .failure(let error):
                 if error == .requestFailed(statusCode: 404) {

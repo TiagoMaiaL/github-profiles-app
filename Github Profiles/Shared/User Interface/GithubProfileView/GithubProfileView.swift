@@ -17,14 +17,15 @@ struct GithubProfileView: View {
     
     var body: some View {
         VStack {
-            profileView()
+            mainProfileView()
             repositoriesView()
         }
         .padding()
         .background(.thickMaterial)
+        .cornerRadius(UIConstants.cardCornerRadius)
     }
     
-    private func profileView() -> some View {
+    private func mainProfileView() -> some View {
         VStack(spacing: Constants.screenVerticalSpacing) {
             ProfileImage(url: viewModel.avatarURL)
             

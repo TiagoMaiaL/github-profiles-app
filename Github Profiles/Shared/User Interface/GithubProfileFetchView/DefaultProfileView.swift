@@ -19,6 +19,7 @@ struct DefaultProfileView: View {
             Text("Search a Github profile using a name or the user's identifier.")
         }
         .padding()
+        .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
     }
 }

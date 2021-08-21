@@ -28,6 +28,7 @@ struct ErrorView: View {
             Text(message)
         }
         .padding()
+        .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
     }
 }

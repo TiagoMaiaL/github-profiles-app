@@ -25,9 +25,11 @@ struct SearchBar: View {
                     onSubmitAction()
                 }
             Image(systemName: "magnifyingglass")
+                .foregroundColor(.appTheme)
         }
         .padding()
         .background(.thickMaterial)
+        .cornerRadius(UIConstants.cardCornerRadius)
     }
 }
 
