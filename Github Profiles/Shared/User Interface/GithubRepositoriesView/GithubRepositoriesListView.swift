@@ -23,13 +23,13 @@ struct GithubRepositoriesListView: View {
                 
                 Spacer()
             }
-            .padding()
+            .padding(.vertical)
             
             ForEach(repositories) { repository in
                 VStack {
                     GithubRepositoryView(viewModel: repository)
                     Divider()
-                        .padding(.horizontal)
+                        .padding(.vertical)
                 }
             }
         }

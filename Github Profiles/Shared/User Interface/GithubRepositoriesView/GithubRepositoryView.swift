@@ -32,7 +32,6 @@ struct GithubRepositoryView: View {
             
             metadataFooterView
         }
-        .padding()
     }
     
     private var metadataFooterView: some View {
@@ -105,5 +104,6 @@ struct GithubRepositoryView_Previews: PreviewProvider {
         let viewModel = GithubRepositoryViewModel(repository: model)
         
         GithubRepositoryView(viewModel: viewModel)
+            .padding()
     }
 }

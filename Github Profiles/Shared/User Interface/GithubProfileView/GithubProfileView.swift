@@ -32,7 +32,7 @@ struct GithubProfileView: View {
         VStack(spacing: Constants.screenVerticalSpacing) {
             profileImage
             
-            VStack {
+            VStack(spacing: Constants.verticalEntrySpacing) {
                 ProfileEntryView(entryValue: viewModel.name)
                     .font(.title)
                 ProfileEntryView(entryValue: viewModel.bio)
@@ -48,7 +48,6 @@ struct GithubProfileView: View {
             .font(.callout)
             .foregroundColor(.secondary)
         }
-        .padding()
     }
     
     @ViewBuilder
