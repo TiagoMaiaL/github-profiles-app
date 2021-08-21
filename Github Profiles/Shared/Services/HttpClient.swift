@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - HttpClient
 
@@ -18,33 +19,50 @@ final class HttpClient {
     
     // MARK: Imperatives
     
-    func resource<T>(from url: URL) async throws -> T where T: Decodable {
-        let result: (data: Data, response: URLResponse)
-        
-        do {
-            result = try await session.data(from: url)
-        } catch {
-            throw HttpError.connectionFailure
+    // TODO: Step 1 - Transform fetchResource(from: using:) into an async method.
+    
+    func fetchResource<T>(
+        from url: URL,
+        using completionHandler: @escaping (Result<T, HttpError>) -> Void
+    ) where T: Decodable {
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else {
+                completionHandler(.failure(.unknownFailure))
+                return
+            }
+            
+            guard error == nil else {
+                completionHandler(.failure(.connectionFailed))
+                return
+            }
+            
+            guard let httpError = response as? HTTPURLResponse else {
+                completionHandler(.failure(.unknownFailure))
+                return
+            }
+            
+            guard (200...299).contains(httpError.statusCode) else {
+                completionHandler(.failure(.requestFailed(statusCode: httpError.statusCode)))
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(.failure(.emptyResultFailure))
+                return
+            }
+            
+            do {
+                let resource: T = try self.parse(from: data)
+                completionHandler(.success(resource))
+            } catch {
+                completionHandler(.failure(.parsingFailed))
+            }
         }
         
-        try checkErrors(from: result.response)
-        let resource: T = try parse(from: result.data)
-        
-        return resource
+        task.resume()
     }
     
     // MARK: Internal Methods
-    
-    // TODO: Inform the errors.
-    func checkErrors(from response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw HttpError.unknownFailure
-        }
-        
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw HttpError.requestFailed(statusCode: httpResponse.statusCode)
-        }
-    }
     
     func parse<T>(from data: Data) throws -> T where T: Decodable {
         try decoder.decode(T.self, from: data)
@@ -54,7 +72,9 @@ final class HttpClient {
 // MARK: - Errors
 
 enum HttpError: Error, Equatable {
-    case connectionFailure
+    case connectionFailed
     case unknownFailure
     case requestFailed(statusCode: Int)
+    case parsingFailed
+    case emptyResultFailure
 }

@@ -52,6 +52,7 @@ struct GithubProfileFetchView: View {
             Spacer()
         }
     }
+    // TODO: Step 3 - Use .task {} to initiate the async work.
 }
 
 // MARK: - Preview
