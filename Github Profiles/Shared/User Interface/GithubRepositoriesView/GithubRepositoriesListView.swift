@@ -17,13 +17,9 @@ struct GithubRepositoriesListView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Repositories")
-                    .font(.title3)
-                
-                Spacer()
-            }
-            .padding(.vertical)
+            LeadingText("Repositories")
+                .font(.title3)
+                .padding(.vertical)
             
             ForEach(repositories) { repository in
                 VStack {

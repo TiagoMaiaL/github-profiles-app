@@ -21,37 +21,49 @@ struct GithubProfileView: View {
     
     var body: some View {
         VStack {
-            profileView
-            repositoriesView
+            profileView()
+            repositoriesView()
         }
         .padding()
         .background(.thickMaterial)
     }
     
-    private var profileView: some View {
+    private func profileView() -> some View {
         VStack(spacing: Constants.screenVerticalSpacing) {
-            profileImage
+            profileImage()
             
             VStack(spacing: Constants.verticalEntrySpacing) {
-                ProfileEntryView(entryValue: viewModel.name)
+                LeadingText(viewModel.name)
                     .font(.title)
-                ProfileEntryView(entryValue: viewModel.bio)
-                    .font(.callout)
+                
+                if let bio = viewModel.bio {
+                    LeadingText(bio)
+                        .font(.callout)
+                }
             }
             .foregroundColor(.primary)
             
             VStack(spacing: Constants.verticalEntrySpacing) {
-                ProfileEntryView(entryImageName: "building.2", entryValue: viewModel.company)
-                ProfileEntryView(entryImageName: "location.north", entryValue: viewModel.location)
-                ProfileEntryView(entryImageName: "link", entryValue: viewModel.blog)
+                if let company = viewModel.company {
+                    IconPrefixedText(iconName: "building.2", label: company)
+                }
+                
+                if let location = viewModel.location {
+                    IconPrefixedText(iconName: "location.north", label: location)
+                }
+                
+                if let blog = viewModel.blog {
+                    IconPrefixedText(iconName: "link", label: blog)
+                }
             }
             .font(.callout)
             .foregroundColor(.secondary)
         }
     }
     
+    // TODO: Create a separate view for the profile image.
     @ViewBuilder
-    private var profileImage: some View {
+    private func profileImage() -> some View {
         if isRunningInPreview {
             Image("octocat_image")
                 .resizable()
@@ -70,7 +82,7 @@ struct GithubProfileView: View {
     }
     
     @ViewBuilder
-    private var repositoriesView: some View {
+    private func repositoriesView() -> some View {
         if !viewModel.repositories.isEmpty {
             GithubRepositoriesListView(repositories: viewModel.repositories)
         }

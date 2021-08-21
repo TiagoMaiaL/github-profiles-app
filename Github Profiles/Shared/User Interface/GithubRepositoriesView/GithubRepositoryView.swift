@@ -23,11 +23,11 @@ struct GithubRepositoryView: View {
     
     var body: some View {
         VStack(spacing: Constants.bodyVerticalSpace) {
-            leadingText(viewModel.name)
+            LeadingText(viewModel.name)
                 .font(.headline)
             
             if let description = viewModel.description {
-                leadingText(description)
+                LeadingText(description)
             }
             
             metadataFooterView
@@ -36,20 +36,11 @@ struct GithubRepositoryView: View {
     
     private var metadataFooterView: some View {
         HStack(spacing: Constants.footerHorizontalSpace) {
-            metadataEntryView(
-                withImage: "star",
-                andText: viewModel.starsCount
-            )
+            IconPrefixedText(iconName: "star", label: viewModel.starsCount)
             
-            metadataEntryView(
-                withImage: "eye",
-                andText: viewModel.watchersCount
-            )
+            IconPrefixedText(iconName: "eye", label: viewModel.watchersCount)
             
-            metadataEntryView(
-                withImage: "arrow.triangle.branch",
-                andText: viewModel.forksCount
-            )
+            IconPrefixedText(iconName: "arrow.triangle.branch", label: viewModel.forksCount)
             
             if let language = viewModel.programmingLanguage {
                 Text(language)
@@ -68,13 +59,6 @@ struct GithubRepositoryView: View {
         HStack(spacing: Constants.entryHorizontalSpace) {
             Image(systemName: imageName)
             Text(valueText)
-        }
-    }
-    
-    private func leadingText(_ text: String) -> some View {
-        HStack {
-            Text(text)
-            Spacer()
         }
     }
 }
