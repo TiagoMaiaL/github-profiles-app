@@ -36,11 +36,23 @@ struct GithubRepositoryView: View {
     
     private var metadataFooterView: some View {
         HStack(spacing: Constants.footerHorizontalSpace) {
-            IconPrefixedText(iconName: "star", label: viewModel.starsCount)
+            IconPrefixedText(
+                iconName: "star",
+                label: viewModel.starsCount,
+                isCentralized: true
+            )
             
-            IconPrefixedText(iconName: "eye", label: viewModel.watchersCount)
+            IconPrefixedText(
+                iconName: "eye",
+                label: viewModel.watchersCount,
+                isCentralized: true
+            )
             
-            IconPrefixedText(iconName: "arrow.triangle.branch", label: viewModel.forksCount)
+            IconPrefixedText(
+                iconName: "arrow.triangle.branch",
+                label: viewModel.forksCount,
+                isCentralized: true
+            )
             
             if let language = viewModel.programmingLanguage {
                 Text(language)

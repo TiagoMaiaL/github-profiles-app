@@ -13,12 +13,14 @@ struct IconPrefixedText: View {
     
     let iconName: String
     let label: String
+    let isCentralized: Bool
     
     // MARK: Initializer
     
-    init(iconName: String, label: String) {
+    init(iconName: String, label: String, isCentralized: Bool = false) {
         self.iconName = iconName
         self.label = label
+        self.isCentralized = isCentralized
     }
     
     // MARK: Body
@@ -27,7 +29,10 @@ struct IconPrefixedText: View {
         HStack {
             Image(systemName: iconName)
             Text(label)
-            Spacer()
+            
+            if !isCentralized {
+                Spacer()
+            }
         }
         .multilineTextAlignment(.leading)
     }
