@@ -19,13 +19,14 @@ struct GithubProfileViewModel: Equatable {
     var company: String? { user.company }
     var location: String? { user.location }
     var blog: String? { user.blog }
-    // TODO: Map this model to a view model.
-    private(set) var repositories: [Repository]?
+    let repositories: [GithubRepositoryViewModel]
     
     // MARK: Initializer
     
-    init(user: GithubUser, repositories: [Repository]?) {
+    init(user: GithubUser, repositories: [GithubRepository] = []) {
         self.user = user
-        self.repositories = repositories
+        self.repositories = repositories.map(
+            GithubRepositoryViewModel.init
+        )
     }
 }

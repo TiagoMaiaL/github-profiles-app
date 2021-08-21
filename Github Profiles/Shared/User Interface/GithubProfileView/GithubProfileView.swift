@@ -88,6 +88,6 @@ struct GithubProfileView_Previews: PreviewProvider {
             bio: "Half cat, half octopus"
         )
         
-        GithubProfileView(viewModel: GithubProfileViewModel(user: user, repositories: nil))
+        GithubProfileView(viewModel: GithubProfileViewModel(user: user, repositories: []))
     }
 }

@@ -44,7 +44,7 @@ final class GithubProfileFetchViewModel: ObservableObject {
             do {
                 let url = profileURL(for: username)
                 let user: GithubUser = try await client.resource(from: url)
-                let repositories: [Repository] = try await client.resource(from: user.publicRepositoriesUrl)
+                let repositories: [GithubRepository] = try await client.resource(from: user.publicRepositoriesUrl)
                 
                 guard !Task.isCancelled else {
                     return
