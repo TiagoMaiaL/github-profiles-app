@@ -28,8 +28,11 @@ struct GithubRepositoriesListView: View {
             ForEach(repositories) { repository in
                 VStack {
                     GithubRepositoryView(viewModel: repository)
-                    Divider()
-                        .padding(.vertical)
+                    
+                    if repositories.last != repository {
+                        Divider()
+                            .padding(.vertical)
+                    }
                 }
             }
         }
