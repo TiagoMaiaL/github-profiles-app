@@ -25,13 +25,11 @@ struct GithubRepositoriesListView: View {
             }
             .padding()
             
-            ScrollView {
-                ForEach(repositories) { repository in
-                    VStack {
-                        GithubRepositoryView(viewModel: repository)
-                        Divider()
-                            .padding(.horizontal)
-                    }
+            ForEach(repositories) { repository in
+                VStack {
+                    GithubRepositoryView(viewModel: repository)
+                    Divider()
+                        .padding(.horizontal)
                 }
             }
         }

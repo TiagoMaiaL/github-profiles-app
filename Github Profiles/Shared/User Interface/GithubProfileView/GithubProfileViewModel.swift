@@ -25,8 +25,9 @@ struct GithubProfileViewModel: Equatable {
     
     init(user: GithubUser, repositories: [GithubRepository] = []) {
         self.user = user
-        self.repositories = repositories.map(
-            GithubRepositoryViewModel.init
-        )
+        self.repositories = repositories
+            .sorted { $0.stars > $1.stars }
+            .prefix(5)
+            .map(GithubRepositoryViewModel.init)
     }
 }

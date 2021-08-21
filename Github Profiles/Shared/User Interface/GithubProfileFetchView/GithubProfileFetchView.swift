@@ -32,7 +32,10 @@ struct GithubProfileFetchView: View {
                 DefaultProfileView()
                 
             case .fetched(let profileViewModel):
-                GithubProfileView(viewModel: profileViewModel)
+                ScrollView {
+                    GithubProfileView(viewModel: profileViewModel)
+                        .padding()
+                }
                 
             case .loading:
                 ProgressView()

@@ -20,6 +20,15 @@ struct GithubProfileView: View {
     // MARK: Body
     
     var body: some View {
+        VStack {
+            profileView
+            repositoriesView
+        }
+        .padding()
+        .background(.thickMaterial)
+    }
+    
+    private var profileView: some View {
         VStack(spacing: Constants.screenVerticalSpacing) {
             profileImage
             
@@ -40,7 +49,6 @@ struct GithubProfileView: View {
             .foregroundColor(.secondary)
         }
         .padding()
-        .background(.thickMaterial)
     }
     
     @ViewBuilder
@@ -59,6 +67,13 @@ struct GithubProfileView: View {
             }
             .frame(minWidth: 0, minHeight: 300)
             // TODO: Make the progress view and the image have the same size.
+        }
+    }
+    
+    @ViewBuilder
+    private var repositoriesView: some View {
+        if !viewModel.repositories.isEmpty {
+            GithubRepositoriesListView(repositories: viewModel.repositories)
         }
     }
 }
@@ -88,6 +103,32 @@ struct GithubProfileView_Previews: PreviewProvider {
             bio: "Half cat, half octopus"
         )
         
-        GithubProfileView(viewModel: GithubProfileViewModel(user: user, repositories: []))
+        let repositories = [
+            GithubRepository(
+                id: 1,
+                name: "My portfolio",
+                description: "The most interesting side projects I've built.",
+                stars: 1,
+                watchers: 1,
+                forks: 0,
+                language: "HTML"
+            ),
+            GithubRepository(
+                id: 2,
+                name: "My blog",
+                description: "Some notes on the things I'm learning.",
+                stars: 0,
+                watchers: 1,
+                forks: 0,
+                language: "HTML"
+            )
+        ]
+        
+        GithubProfileView(
+            viewModel: GithubProfileViewModel(
+                user: user,
+                repositories: repositories
+            )
+        )
     }
 }
