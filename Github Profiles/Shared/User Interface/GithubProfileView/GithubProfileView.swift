@@ -13,10 +13,6 @@ struct GithubProfileView: View {
     
     var viewModel: GithubProfileViewModel
     
-    private var isRunningInPreview: Bool {
-        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-    }
-    
     // MARK: Body
     
     var body: some View {
@@ -30,7 +26,7 @@ struct GithubProfileView: View {
     
     private func profileView() -> some View {
         VStack(spacing: Constants.screenVerticalSpacing) {
-            profileImage()
+            ProfileImage(url: viewModel.avatarURL)
             
             VStack(spacing: Constants.verticalEntrySpacing) {
                 LeadingText(viewModel.name)
@@ -58,26 +54,6 @@ struct GithubProfileView: View {
             }
             .font(.callout)
             .foregroundColor(.secondary)
-        }
-    }
-    
-    // TODO: Create a separate view for the profile image.
-    @ViewBuilder
-    private func profileImage() -> some View {
-        if isRunningInPreview {
-            Image("octocat_image")
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-        } else {
-            AsyncImage(url: viewModel.avatarURL) { image in
-                image
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(minWidth: 0, minHeight: 300)
-            // TODO: Make the progress view and the image have the same size.
         }
     }
     
