@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A0CD30926D07D010058E286 /* GithubRepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0CD30826D07D010058E286 /* GithubRepositoryViewModel.swift */; };
+		5A0CD30D26D0862B0058E286 /* GithubRepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0CD30C26D0862B0058E286 /* GithubRepositoryView.swift */; };
 		5A4CB54726C9E85E008CF3F2 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CB54626C9E85E008CF3F2 /* ErrorView.swift */; };
 		5A77BF4026C213C100E353B1 /* GithubProfileFetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF3F26C213C100E353B1 /* GithubProfileFetchViewModel.swift */; };
 		5A77BF4126C213C100E353B1 /* GithubProfileFetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A77BF3F26C213C100E353B1 /* GithubProfileFetchViewModel.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		5A0CD30826D07D010058E286 /* GithubRepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryViewModel.swift; sourceTree = "<group>"; };
+		5A0CD30C26D0862B0058E286 /* GithubRepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryView.swift; sourceTree = "<group>"; };
 		5A4CB54626C9E85E008CF3F2 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5A77BF3F26C213C100E353B1 /* GithubProfileFetchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfileFetchViewModel.swift; sourceTree = "<group>"; };
 		5A77BF4226C2B43900E353B1 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5A0CD30826D07D010058E286 /* GithubRepositoryViewModel.swift */,
+				5A0CD30C26D0862B0058E286 /* GithubRepositoryView.swift */,
 			);
 			path = GithubRepositoriesView;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD96B5C26C07CF00012AFFA /* GithubProfileFetchView.swift in Sources */,
+				5A0CD30D26D0862B0058E286 /* GithubRepositoryView.swift in Sources */,
 				5A0CD30926D07D010058E286 /* GithubRepositoryViewModel.swift in Sources */,
 				5AB7FC4D26C7446000B69E39 /* GithubProfileView.swift in Sources */,
 				5A77BF4626C2B74700E353B1 /* GithubProfileViewModel.swift in Sources */,

@@ -25,16 +25,16 @@ struct GithubRepositoryViewModel: Equatable, Identifiable {
         repository.description
     }
     
-    var starsCount: Int {
-        repository.stars
+    var starsCount: String {
+        String(repository.stars)
     }
     
-    var watchersCount: Int {
-        repository.watchers
+    var watchersCount: String {
+        String(repository.watchers)
     }
     
-    var forksCount: Int {
-        repository.forks
+    var forksCount: String {
+        String(repository.forks)
     }
     
     var programmingLanguage: String? {
