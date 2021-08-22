@@ -16,13 +16,16 @@ struct GithubProfileFetchView: View {
     
     @State
     private var searchText: String = ""
-        
+    
+    @State
+    private var shouldStartFetch = false
+    
     // MARK: Body
     
     var body: some View {
         VStack {
             SearchBar(searchText: $searchText) {
-                viewModel.fetchProfile(using: searchText)
+                shouldStartFetch = true
             }
             .padding()
             
@@ -51,6 +54,20 @@ struct GithubProfileFetchView: View {
             
             Spacer()
         }
+        .task(id: shouldStartFetch) {
+            await fetchProfile()
+        }
+    }
+    
+    // MARK: Internal methods
+    
+    private func fetchProfile() async {
+        guard shouldStartFetch else {
+            return
+        }
+        
+        await viewModel.fetchProfile(using: searchText)
+        shouldStartFetch = false
     }
 }
 

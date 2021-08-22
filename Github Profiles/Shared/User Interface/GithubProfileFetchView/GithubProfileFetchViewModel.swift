@@ -15,8 +15,6 @@ final class GithubProfileFetchViewModel: ObservableObject {
     
     private let client = HttpClient()
     
-    private var profileTask: Task<Void, Never>?
-    
     // MARK: State
     
     enum State: Equatable {
@@ -27,36 +25,33 @@ final class GithubProfileFetchViewModel: ObservableObject {
     }
     
     @Published
-    private(set) var state = State.default
+    var state = State.default
     
     // MARK: Imperatives
     
-    func fetchProfile(using username: String) {
+    func fetchProfile(using username: String) async {
         guard !username.isEmpty else {
             state = .`default`
             return
         }
         
-        profileTask?.cancel()
-        profileTask = Task(priority: .userInitiated) {
-            state = .loading
+        state = .loading
+        
+        do {
+            let url = profileURL(for: username)
+            let user: GithubUser = try await client.resource(from: url)
+            let repositories: [GithubRepository] = try await client.resource(from: user.publicRepositoriesUrl)
             
-            do {
-                let url = profileURL(for: username)
-                let user: GithubUser = try await client.resource(from: url)
-                let repositories: [GithubRepository] = try await client.resource(from: user.publicRepositoriesUrl)
-                
-                guard !Task.isCancelled else {
-                    return
-                }
-                
-                let profileViewModel = GithubProfileViewModel(user: user, repositories: repositories)
-                state = .fetched(profile: profileViewModel)
-                
-            } catch {
-                let httpError = (error as? HttpError) ?? .unknownFailure
-                state = .failure(error: httpError)
+            guard !Task.isCancelled else {
+                return
             }
+            
+            let profileViewModel = GithubProfileViewModel(user: user, repositories: repositories)
+            state = .fetched(profile: profileViewModel)
+            
+        } catch {
+            let httpError = (error as? HttpError) ?? .unknownFailure
+            state = .failure(error: httpError)
         }
     }
     
