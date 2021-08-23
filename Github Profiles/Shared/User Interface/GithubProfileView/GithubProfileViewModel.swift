@@ -18,7 +18,15 @@ struct GithubProfileViewModel: Equatable {
     var bio: String? { user.bio }
     var company: String? { user.company }
     var location: String? { user.location }
-    var blog: String? { user.blog }
+    var blog: String? {
+        let blog = user.blog ?? ""
+        
+        if blog.isEmpty {
+            return nil
+        }
+        
+        return blog
+    }
     let repositories: [GithubRepositoryViewModel]
     
     // MARK: Initializer
