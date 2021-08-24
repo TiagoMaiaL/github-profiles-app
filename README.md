@@ -4,6 +4,10 @@ An app that fetches and displays Github profiles, using structured concurrency a
 
 <img src="resources/demo-recording.gif" width="250px" />
 
+## Notes
+
+This project uses the latest Xcode 13 beta (version 5).
+
 ## Useful links
 
 ### WWDC videos
